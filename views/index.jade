@@ -7,4 +7,11 @@ block content
     a(href="/register") Register
   if (user)
     p You are currently logged in as #{user.username}
+    
+    p please add some recipies
+    a(href="/recipe/new") Press and add
+    p checkout some recipies
+    a(href="/recipe") Show all recipes
+
+    P 
     a(href="/logout") Logout

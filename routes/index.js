@@ -50,7 +50,14 @@ router.get('/recipe/new', function(req, res){
                  
                });
        });
+router.get('/recipe/:id', function(req, res){
+    Recipe.findById(req.params.id, function(err, recipe){
 
+        res.render('recipedetail', {
+                       recipe : recipe
+                });
+            });
+        });
 
  router.post('/recipe', function (req, res) {
         // INSTANTIATE INSTANCE OF MODEL
@@ -70,6 +77,7 @@ router.get('/recipe/new', function(req, res){
          if(err){
              console.log(err);
          }else{
+             console.log(recipe)
             res.render('getrecipe',
             {
                 
