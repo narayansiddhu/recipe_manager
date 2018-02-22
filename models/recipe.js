@@ -26,12 +26,9 @@ let recipeSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  pic:{
-    type: String,
-    required: true
-  },
-  body:{
-    type: String,
+
+  ingredients:{
+    type: [String],
     required: true
   }
 });

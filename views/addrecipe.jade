@@ -1,21 +1,30 @@
 extends layout
 
 block content
-form(role='form', action="/recipe",method="post", style='max-width: 300px;')
+     form(role='form', action="/recipe",method="post", style='max-width: 300px;')
+      label  Tittle
       .form-group
           input.form-control(type='text', name="title", placeholder='Enter title')
       .form-group
-        span.label Description
+        label  Description
             textarea(name="description", cols="40", rows="5")
       .form-group
-        input.form-control(type='text', name="steps", placeholder='Add Steps')
+        label  Steps
+          input.form-control(type='text', name="steps", placeholder='Add Steps')
       .form-group
-        input.form-control(type='servings', name="servings", placeholder='Servers how many?')
+        label  Servings 
+        input.form-control(type='text', name="serving", placeholder='Servers how many?')
       .form-group
+         label  Preparation Time
           input.form-control(type='text', name="preptime", placeholder='How long does it take') 
       .form-group
-          input.form-control(type='text', name="author", placeholder='Cooked by')     
+          label Cooked by
+          input.form-control(type='text', name="author", placeholder='Write your name')  
+      .form-group
+          label Ingredients
+          input.form-control(type='text', name="ingredients", placeholder='what goes in..?')      
+
 
       button.btn.btn-default(type='submit') Submit
-      a(href='/')
+      a(href='/recipe')
         button.btn.btn-primary(type="button") Cancel
