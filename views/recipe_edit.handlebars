@@ -5,7 +5,7 @@
 <br>
 {{recipe.ingredients}}
 
-<form method="post" action="/recipe/edit">
+<form method="post" action="/recipe/edit/{{recipe.id}}">
    <div class="form-group">
     <label>Title</label>
     <input type="text" class="form-control"  name="title" value="{{recipe.title}}">
