@@ -47,14 +47,14 @@ router.post('/add', (req, res) => {
                 return;
             } else {
                 req.flash('success_msg', 'You are added a new Recipe');
-                res.redirect('/recipe');
+                res.redirect('/');
             }
         });
 
     }
 
 });
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', (req, res,next) => {
     if (!req.user._id) {
         res.status(500).send();
     }
@@ -74,11 +74,12 @@ router.delete('/delete/:id', (req, res) => {
 
 
 });
-router.get('/edit/:id', ensureAuthenticated,(req,res)=>{
+router.get('/edit/:id', ensureAuthenticated,(req,res,next)=>{
     Recipe.findById(req.params.id,function(err,recipe){
         if(recipe.author!=req.user.username){
-            res.redirect('/recipe')
-      }
+            return res.redirect('/')
+           next();
+        }
         res.render('recipe_edit',{
             recipe:recipe
         });
@@ -100,7 +101,7 @@ router.post('/edit/:id', function(req, res){
         return;
       } else {
         req.flash('success_msg', 'Recipe Updated');
-        res.redirect('/recipe');
+        res.redirect('/');
       }
     });
   });

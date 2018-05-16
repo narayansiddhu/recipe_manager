@@ -1,5 +1,5 @@
 <h2 class="page-header">Recipes</h2>
-<a href="recipe/add" type="button" class="btn btn-primary btn-block">
+<a href="/add" type="button" class="btn btn-primary btn-block">
     Add Recipes
 </a>
 </br>
@@ -19,7 +19,7 @@
         <br> {{ingredients}}
         <br>
       
-        <a href="recipe/edit/{{id}}" type="button" class="btn btn-default edit-recipe">
+        <a href="/edit/{{id}}" type="button" class="btn btn-default edit-recipe" data-id="{{id}}" >
         <span class="glyphicon glyphicon-edit" aria-hidden="true">
          </span></a>
             <button class="btn btn-danger delete-recipe" data-id="{{id}}">
