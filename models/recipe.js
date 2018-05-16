@@ -10,26 +10,12 @@ let recipeSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  steps:{
+  ingredients:{
     type: String,
-    required: true
-  },
-  serving:{
-    type: Number,
-    required: true
-  },
-  preptime:{
-    type: Number,
     required: true
   },
   author:{
-    type: String,
-    required: true
-  },
-
-  ingredients:{
-    type: [String],
-    required: true
+      type: String
   }
 });
 

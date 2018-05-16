@@ -1,0 +1,22 @@
+<h2 class="page-header">Edit Recipe</h2>
+
+
+{{recipe.title}}
+<br>
+{{recipe.ingredients}}
+
+<form method="post" action="/recipe/edit">
+   <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control"  name="title" value="{{recipe.title}}">
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input type="text" class="form-control" name="description" value="{{recipe.description}}">
+  </div>
+   <div class="form-group">
+    <label>Ingredients</label>
+    <input type="text" class="form-control"  name="ingredients" value="{{recipe.ingredients}}">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
