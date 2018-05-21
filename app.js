@@ -10,8 +10,10 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+//to connect db to mlab
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://admin:123456@ds125680.mlab.com:25680/recipemanager',{useMongoClient:true})
+//to connect db to localclient
 // mongoose.connect('mongodb://localhost/recipemanager');
 // var db = mongoose.connection;
 
