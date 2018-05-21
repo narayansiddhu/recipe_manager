@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var Recipe = require('../models/recipe');
 var User = require('../models/user');
+
+//to get the all recipes in home page
 router.get('/',(req, res) => {
     Recipe.find({}, (err, recipes) => {
         if (err) return err;
@@ -11,17 +13,14 @@ router.get('/',(req, res) => {
             })
     })
 });
+
+//get the form to add recipe
 router.get('/add', ensureAuthenticated, (req, res) => {
     res.render('recipe_add');
 });
 
+//upload the recipes
 router.post('/add', (req, res) => {
-    // var title = req.body.title;
-    // var description = req.body.description;
-    // var ingredients = req.body.ingredients;
-
-
-
     // Validation
     req.checkBody('title', 'title is required').notEmpty();
     req.checkBody('description', 'description is required').notEmpty();
@@ -54,6 +53,8 @@ router.post('/add', (req, res) => {
     }
 
 });
+
+//delete the recipe if user's belonging recipe
 router.delete('/delete/:id', (req, res,next) => {
     if (!req.user._id) {
         res.status(500).send();
@@ -74,6 +75,8 @@ router.delete('/delete/:id', (req, res,next) => {
 
 
 });
+
+// get the single recipe in new route to edit if user's recipe is matches
 router.get('/edit/:id', ensureAuthenticated,(req,res,next)=>{
     Recipe.findById(req.params.id,function(err,recipe){
         if(recipe.author!=req.user.username){
@@ -86,6 +89,8 @@ router.get('/edit/:id', ensureAuthenticated,(req,res,next)=>{
     });
 
 });
+
+//update the edit recipe 
 router.post('/edit/:id', function(req, res){
  
     let recipe = {};
@@ -105,7 +110,8 @@ router.post('/edit/:id', function(req, res){
       }
     });
   });
-  
+
+  //authentication
   function ensureAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         return next();

@@ -10,11 +10,12 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://admin:123456@ds125680.mlab.com:25680/recipemanager',{useMongoClient:true})
+// mongoose.connect('mongodb://localhost/recipemanager');
+// var db = mongoose.connection;
 
-mongoose.connect('mongodb://localhost/recipemanager');
-var db = mongoose.connection;
 
-// var routes = require('./routes/index');
 var users = require('./routes/users');
 var recipe = require('./routes/recipe')
 // Init App
@@ -76,7 +77,7 @@ app.use(function (req, res, next) {
 
 
 
-// app.use('/', routes);
+
 app.use('/users', users);
 app.use('/',recipe);
 // Set Port
